@@ -1,4 +1,3 @@
 <Solution>
-  <Project Path="intro/intro.csproj" />
-  <Project Path="MyMathLibrary/MyMathLibrary.csproj" />
+  <Project Path="practice07102026/practice07102026.csproj" />
 </Solution>
