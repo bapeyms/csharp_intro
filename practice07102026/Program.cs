@@ -178,7 +178,7 @@ internal class Program
         //    Console.WriteLine(arr[i]);
         //}
 
-        // homework 
+        // homework 06.10.2026
         // 1
         uint num1 = ReadSingleDigit("Please, enter first digit: ");
         uint num2 = ReadSingleDigit("Please, enter second digit: ");
@@ -195,6 +195,104 @@ internal class Program
         double result = (value * percent) / 100.0;
         Console.WriteLine($"\n{percent}% of {value} = {result}");
 
+        // homework 07.10.2026
+        // 4
+        Console.WriteLine("TASK 4");
+        Random rand = new Random();
+
+        const uint N = 10;
+        uint[] arr1 = new uint[N];
+        for (uint i = 0; i < N; i++)
+        {
+            arr1[i] = (uint)rand.Next(1, 5);
+        }
+
+        const uint M = 5;
+        uint[] arr2 = new uint[M];
+        for (uint i = 0; i < M; i++)
+        {
+            arr2[i] = (uint)rand.Next(1, 100);
+        }
+
+        uint[] arrTemp = new uint[N + M];
+        int count = 0;
+        for (int i = 0; i < N; i++)
+        {
+            bool inArr2 = false;
+            for (int j = 0; j < M; j++)
+            {
+                if (arr1[i] == arr2[j])
+                {
+                    inArr2 = true;
+                    break;
+                }
+            }
+            bool alreadyInTemp = false;
+            for (int k = 0; k < count; k++)
+            {
+                if (arrTemp[k] == arr1[i])
+                {
+                    alreadyInTemp = true;
+                    break;
+                }
+            }
+            if (inArr2 && !alreadyInTemp)
+            {
+                arrTemp[count] = arr1[i];
+                count++;
+            }
+        }
+        uint[] arrResult = new uint[count];
+        Array.Copy(arrTemp, arrResult, count);
+        Console.Write("RESULT: ");
+        Console.WriteLine(string.Join(", ", arrResult));
+        Console.WriteLine(" ");
+
+        // 7
+        Console.WriteLine("TASK 7");
+        Console.Write("Please, enter a sentence: ");
+        string sentence1 = Console.ReadLine() ?? "";
+        if (string.IsNullOrWhiteSpace(sentence1))
+        {
+            Console.WriteLine("Empty sentence entered!");
+            return;
+        }
+
+        string[] words = sentence1.Split(' ');
+        for (int i = 0; i < words.Length; i++)
+        {
+            char[] charArr = words[i].ToCharArray();
+            Array.Reverse(charArr);
+            words[i] = new string(charArr);
+        }
+        string result7 = string.Join(" ", words);
+        Console.WriteLine($"Result: {result}");
+        Console.WriteLine(" ");
+
+        // 8
+        Console.WriteLine("TASK 8");
+        Console.Write("Please, enter a sentence: ");
+        string sentence2 = Console.ReadLine() ?? "";
+        if (string.IsNullOrWhiteSpace(sentence2))
+        {
+            Console.WriteLine("Empty sentence entered!");
+            return;
+        }
+
+        string vowels = "aeiouAEIOU";
+        int vowelCount = 0;
+        foreach (char c in sentence2)
+        {
+            if (vowels.Contains(c))
+            {
+                vowelCount++;
+            }
+        }
+        Console.WriteLine($"Number of vowels in the sentence: {vowelCount}");
+        Console.WriteLine(" ");
+
+
+        // homework 06.10.2026
         // 1
         static uint ReadSingleDigit(string prompt)
         {
